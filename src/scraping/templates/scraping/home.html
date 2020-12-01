@@ -15,11 +15,19 @@
     </div>
     {% endfor %}
 
-    <form method="GET" action="">
+    <div class="row-mx-auto">
+        <div class="col-md-6">
+           <form method="GET" action="">
+             <div class="form-group">
+                {{form.as_p}}
+             </div>
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </div>
+    </div>
 
-     {{form.as_p}}
 
-      <input type="submit" value="Submit">
+
+
     </form>
 
 {% endblock %}
