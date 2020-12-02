@@ -1,8 +1,37 @@
-from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import UserManager
 from django.db import models
 
 # Create your models here.
+
+class MyUserManager(BaseUserManager):
+    def create_user(self, email, password=None):
+        """
+        Creates and saves a User with the given email,  and password.
+        """
+        if not email:
+            raise ValueError('Users must have an email address')
+
+        user = self.model(
+            email=self.normalize_email(email),
+
+        )
+
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None):
+        """
+        Creates and saves a superuser with the given email, dand password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
 
 class MyUser(AbstractBaseUser):
     email = models.EmailField(
@@ -13,15 +42,15 @@ class MyUser(AbstractBaseUser):
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    city = models.ForeignKey('City',on_delete=models.SET_NULL,
+    city = models.ForeignKey('scraping.City',on_delete=models.SET_NULL,
                              null=True, blank=True
                              )
-    language = models.ForeignKey('Language',on_delete=models.SET_NULL,
+    language = models.ForeignKey('scraping.Language',on_delete=models.SET_NULL,
                              null=True, blank=True
                              )
     srnd_email = models.BooleanField(default=True)
 
-    objects = UserManager()
+    objects = MyUserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['']
