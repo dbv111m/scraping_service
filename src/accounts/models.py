@@ -1,3 +1,5 @@
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import UserManager
 from django.db import models
 
 # Create your models here.
@@ -8,14 +10,21 @@ class MyUser(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    date_of_birth = models.DateField()
+
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    city = models.ForeignKey('City',on_delete=models.SET_NULL,
+                             null=True, blank=True
+                             )
+    language = models.ForeignKey('Language',on_delete=models.SET_NULL,
+                             null=True, blank=True
+                             )
+    srnd_email = models.BooleanField(default=True)
 
-    objects = MyUserManager()
+    objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['date_of_birth']
+    REQUIRED_FIELDS = ['']
 
     def __str__(self):
         return self.email
