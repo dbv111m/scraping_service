@@ -10,24 +10,29 @@ headers_ = {
 domain = 'https://www.work.ua/'
 url = 'https://www.work.ua/ru/jobs-kyiv-python/'
 resp = requests.get(url, headers=headers_)
+jobs = []
+errors =[]
 if resp.status_code == 200:
     soup = BS(resp.content, 'html.parser')
     main_div = soup.find('div', attrs={'id': 'pjax-job-list'})
-    # print (main_div)
+    if main_div:
+        div_lst = main_div.find_all('div', attrs={'class': 'job-link'})
+        for div in div_lst:
+            title = div.find('h2')
+            href = title.a['href']
+            name = title.a['title']
+            content = div.p.text
+            company = 'No Name'
+            logo = div.find('img')
+            if logo:
+                company = logo['alt']
+            jobs.append({'title':title.text, 'company':company, 'url': domain+href, 'description': content})
+    else:
+        errors.append({'url': url, 'title': 'No Div'})
 
-    div_lst = main_div.find_all('div', attrs={'class': 'job-link'})
+else:
+    errors.append({'url': url, 'title': 'Page is not responsing'})
 
-    for div in div_lst:
-        title = div.find('h2')
-        href = title.a['href']
-        name = title.a['title']
-        content = div.p.text
-        company = 'No Name'
-        logo = div.find('img')
-        if logo:
-            company = logo['alt']
-
-
-h = codecs.open('work.html', 'w', 'utf-8')
-h.write(str(resp.text))
+h = codecs.open('work.txt', 'w', 'utf-8')
+h.write(str(jobs))
 h.close()

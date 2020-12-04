@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-from scraping.utils import from_cyrillic_to_eng
+from .utils import from_cyrillic_to_eng
 
 
 class City(models.Model):
