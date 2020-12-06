@@ -45,32 +45,76 @@ def rabota(url):
 
     if resp.status_code == 200:
         soup = BS(resp.content, 'html.parser')
-        table = soup.find('table', attrs={'id': 'ctl00_content_vacancyList_gridList'})
-        if table:
-            tr_lst = table.find_all('tr', attrs={'id': True})
-            for tr in tr_lst:
-                div = tr.find('div', attrs = {'class': 'card-body'})
-                if div:
-                    title = div.find('h2', attrs = {'class': 'card-title'})
-                    href = title.a['href']
-                    content = div.find('div', attrs = {'class': 'card-description'})
+        new_jobs = soup.find('div', attrs='f-vacancylist-newnotfound')
+        if not new_jobs:
+            table = soup.find('table', attrs={'id': 'ctl00_content_vacancyList_gridList'})
+            if table:
+                tr_lst = table.find_all('tr', attrs={'id': True})
+                for tr in tr_lst:
+                    div = tr.find('div', attrs = {'class': 'card-body'})
+                    if div:
+                        title = div.find('h2', attrs = {'class': 'card-title'})
+                        href = title.a['href']
+                        content = div.find('div', attrs = {'class': 'card-description'})
 
-                    company = 'NoName'
-                    p = div.find ('p', attrs = {'class': 'company-name'})
-                    if p:
-                        company = p.a.text
+                        company = 'NoName'
+                        p = div.find ('p', attrs = {'class': 'company-name'})
+                        if p:
+                            company = p.a.text
 
-                    jobs.append({'title':title.text, 'company': company, 'url': domain+href, 'description': content.text})
+                        jobs.append({'title':title.text, 'company': company, 'url': domain+href, 'description': content.text})
+            else:
+                errors.append({'url': url, 'title': 'No Div'})
         else:
-            errors.append({'url': url, 'title': 'No Div'})
-
+            errors.append({'url': url, 'title': 'Page is empty'} )
     else:
         errors.append({'url': url, 'title': 'Page is not responsing'})
     return jobs, errors
 
+
+def dou (url):
+    jobs = []
+    errors = []
+    domain = ''
+    resp = requests.get(url, headers=headers_)
+
+    if resp.status_code == 200:
+        soup = BS(resp.content, 'html.parser')
+        new_jobs = soup.find('div', attrs='f-vacancylist-newnotfound')
+        if not new_jobs:
+            table = soup.find('div', attrs={'id': 'vacancyListId'})
+            if table:
+                div_lst = table.find_all('div', attrs={'class': 'vacancy'})
+                for div in div_lst:
+
+                    div_title = div.find('div', attrs = {'class': 'title'})
+                    title = div_title.text
+                    href = div_title.a['href']
+
+                    content = div.find('div', attrs = {'class': 'sh-info'})
+
+                    company = 'NoName'
+                    p = div.find ('a', attrs = {'class': 'company'})
+                    if p:
+                        company = p.text
+
+                    jobs.append({'title':title, 'company': company, 'url': domain+href, 'description': content.text})
+
+            else:
+                errors.append({'url': url, 'title': 'No Div'})
+        else:
+            errors.append({'url': url, 'title': 'Page is empty'} )
+    else:
+        errors.append({'url': url, 'title': 'Page is not responsing'})
+    d=1
+    return jobs, errors
+
+
+
+
 if __name__ == '__main__':
-    url = 'https://rabota.ua/zapros/python/%d0%ba%d0%b8%d0%b5%d0%b2'
-    jobs, errors = rabota(url)
+    url = 'https://jobs.dou.ua/vacancies/?city=%D0%9A%D0%B8%D0%B5%D0%B2&category=Python'
+    jobs, errors = dou(url)
     h = codecs.open('work.txt', 'w', 'utf-8')
     h.write(str(jobs))
     h.close()
