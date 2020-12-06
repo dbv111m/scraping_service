@@ -11,7 +11,7 @@ headers_ = {
 def work(url):
     jobs = []
     errors = []
-    domain = 'https://www.work.ua/'
+    domain = 'https://www.work.ua'
     url = 'https://www.work.ua/ru/jobs-kyiv-python/'
     resp = requests.get(url, headers=headers_)
 
@@ -23,7 +23,6 @@ def work(url):
             for div in div_lst:
                 title = div.find('h2')
                 href = title.a['href']
-                name = title.a['title']
                 content = div.p.text
                 company = 'No Name'
                 logo = div.find('img')
@@ -31,7 +30,7 @@ def work(url):
                     company = logo['alt']
                 jobs.append({'title':title.text, 'company':company, 'url': domain+href, 'description': content})
         else:
-            errors.append({'url': url, 'title': 'No Div'})
+            errors.append({'url': url, 'title': 'No Table'})
 
     else:
         errors.append({'url': url, 'title': 'Page is not responsing'})
@@ -46,19 +45,22 @@ def rabota(url):
 
     if resp.status_code == 200:
         soup = BS(resp.content, 'html.parser')
-        main_div = soup.find('div', attrs={'id': 'pjax-job-list'})
-        if main_div:
-            div_lst = main_div.find_all('div', attrs={'class': 'job-link'})
-            for div in div_lst:
-                title = div.find('h2')
-                href = title.a['href']
-                name = title.a['title']
-                content = div.p.text
-                company = 'No Name'
-                logo = div.find('img')
-                if logo:
-                    company = logo['alt']
-                jobs.append({'title':title.text, 'company':company, 'url': domain+href, 'description': content})
+        table = soup.find('table', attrs={'id': 'ctl00_content_vacancyList_gridList'})
+        if table:
+            tr_lst = table.find_all('tr', attrs={'id': True})
+            for tr in tr_lst:
+                div = tr.find('div', attrs = {'class': 'card-body'})
+                if div:
+                    title = div.find('h2', attrs = {'class': 'card-title'})
+                    href = title.a['href']
+                    content = div.find('div', attrs = {'class': 'card-description'})
+
+                    company = 'NoName'
+                    p = div.find ('p', attrs = {'class': 'company-name'})
+                    if p:
+                        company = p.a.text
+
+                    jobs.append({'title':title.text, 'company': company, 'url': domain+href, 'description': content.text})
         else:
             errors.append({'url': url, 'title': 'No Div'})
 
