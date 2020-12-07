@@ -1,8 +1,9 @@
 import codecs
 
-from scraping.parsers import *
+from scraping.myparsers import *
 
 parsers_ = (
+    (hhru, 'https://hh.ru/search/vacancy?clusters=true&area=1&no_magic=true&enable_snippets=true&salary=&st=searchVacancy&text=python'),
     (work, 'https://www.work.ua/ru/jobs-kyiv-python/'),
     (rabota, 'https://rabota.ua/zapros/python/%d0%ba%d0%b8%d0%b5%d0%b2/'),
     (dou, 'https://jobs.dou.ua/vacancies/?city=%D0%9A%D0%B8%D0%B5%D0%B2&category=Python'),

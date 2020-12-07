@@ -1,9 +1,10 @@
 import requests
 import codecs
+import lxml
 from bs4 import BeautifulSoup as BS
 from random import randint
 
-__all__ = ('work', 'rabota', 'dou', 'djinni')
+__all__ = ('work', 'rabota', 'dou', 'djinni', 'hhru')
 
 headers_  = [
     {'User-Agent': 'Mozilla/5.0 (Windows NT 5.1; rv:47.0) Gecko/20100101 Firefox/47.0',
@@ -151,12 +152,49 @@ def djinni (url):
             errors.append({'url': url, 'title': 'Page is empty'} )
     else:
         errors.append({'url': url, 'title': 'Page is not responsing'})
-    d=1
+
+    return jobs, errors
+
+def hhru (url):
+    jobs = []
+    errors = []
+    domain = ''
+    resp = requests.get(url, headers=headers_[randint(0, 2)])
+
+    if resp.status_code == 200:
+        soup = BS(resp.content, 'lxml')
+        new_jobs = soup.find('div', attrs='f-vacancylist-newnotfound')
+        if not new_jobs:
+            table = soup.find('div', attrs={'class': 'vacancy-serp'})
+            if table:
+                div_lst = table.find_all('div', attrs={'data-qa': 'vacancy-serp__vacancy'})
+                for div in div_lst:
+
+                    div_title = div.find('span', attrs = {'class': 'g-user-content'})
+                    title = div_title.text
+                    href = div_title.a['href']
+
+                    content = div.find('div', attrs = {'data-qa': 'vacancy-serp__vacancy_snippet_requirement'})
+
+                    company = 'NoName'
+                    p = div.find ('div', attrs = {'class': 'vacancy-serp-item__meta-info-company'})
+                    if p:
+                        company = p.text
+
+                    jobs.append({'title':title, 'company': company, 'url': domain+href, 'description': content.text})
+
+            else:
+                errors.append({'url': url, 'title': 'No Div'})
+        else:
+            errors.append({'url': url, 'title': 'Page is empty'} )
+    else:
+        errors.append({'url': url, 'title': 'Page is not responsing'})
+
     return jobs, errors
 
 if __name__ == '__main__':
-    url = 'https://djinni.co/jobs/keyword-python/kyiv/'
-    jobs, errors = djinni(url)
-    h = codecs.open('work.txt', 'w', 'utf-8')
+    url = 'https://hh.ru/search/vacancy?clusters=true&area=1&no_magic=true&enable_snippets=true&salary=&st=searchVacancy&text=python'
+    jobs, errors = hhru(url)
+    h = codecs.open('work_hhru.txt', 'w', 'utf-8')
     h.write(str(jobs))
     h.close()
