@@ -110,11 +110,46 @@ def dou (url):
     return jobs, errors
 
 
+def djinni (url):
+    jobs = []
+    errors = []
+    domain = 'https://djinni.co'
+    resp = requests.get(url, headers=headers_)
 
+    if resp.status_code == 200:
+        soup = BS(resp.content, 'html.parser')
+        new_jobs = soup.find('div', attrs='f-vacancylist-newnotfound')
+        if not new_jobs:
+            table = soup.find('ul', attrs={'class': 'list-unstyled list-jobs'})
+            if table:
+                div_lst = table.find_all('li', attrs={'class': 'list-jobs__item'})
+                for div in div_lst:
+
+                    div_title = div.find('div', attrs = {'class': 'list-jobs__title'})
+                    title = div_title.text
+                    href = div_title.a['href']
+
+                    content = div.find('div', attrs = {'class': 'list-jobs__description'})
+
+                    company = 'NoName'
+                    p = div.find ('a', attrs = {'style': 'color:#999;text-decoration:none;'})
+                    if p:
+                        company = p.text
+
+                    jobs.append({'title':title, 'company': company, 'url': domain+href, 'description': content.text})
+
+            else:
+                errors.append({'url': url, 'title': 'No Div'})
+        else:
+            errors.append({'url': url, 'title': 'Page is empty'} )
+    else:
+        errors.append({'url': url, 'title': 'Page is not responsing'})
+    d=1
+    return jobs, errors
 
 if __name__ == '__main__':
-    url = 'https://jobs.dou.ua/vacancies/?city=%D0%9A%D0%B8%D0%B5%D0%B2&category=Python'
-    jobs, errors = dou(url)
+    url = 'https://djinni.co/jobs/keyword-python/kyiv/'
+    jobs, errors = djinni(url)
     h = codecs.open('work.txt', 'w', 'utf-8')
     h.write(str(jobs))
     h.close()
