@@ -11,7 +11,7 @@ import django
 django.setup()
 
 from scraping.myparsers import *
-from scraping.models import City, Language, Vacancy
+from scraping.models import City, Language, Vacancy, Error
 
 parsers_ = (
     (hhru, 'https://hh.ru/search/vacancy?text=python&area=115'),
@@ -26,7 +26,7 @@ jobs, errors = [], []
 for parsed_site, parsed_url in parsers_:
     current_jobs, current_errors = parsed_site(parsed_url)
     jobs += current_jobs
-    errors += current_errors
+    errors  += current_errors
 
 for job in jobs:
     v = Vacancy(**job, city=city, language=language)
@@ -35,7 +35,8 @@ for job in jobs:
     except DatabaseError:
         pass
 
-
+if errors:
+        er = Error(data=errors).save()
 
 # h = codecs.open('work.txt', 'w', 'utf-8')
 # h.write(str(jobs))
