@@ -4,6 +4,9 @@ import jsonfield
 # Create your models here.
 from scraping.utils import from_cyrillic_to_eng
 
+def default_urls():
+    return {'hhru': '', 'work': '', 'rabota':'', 'dou': '', 'djinni': ''}
+
 
 class City(models.Model):
     name = models.CharField(max_length=50, verbose_name='Название города',
@@ -60,3 +63,10 @@ class Vacancy(models.Model):
 class Error(models.Model):
     timestamp = models.DateField(auto_now_add=True)
     data= jsonfield.JSONField()
+
+class Url(models.Model):
+    city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='Город')
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name='Язык программирования')
+    url_data = jsonfield.JSONField(default=default_urls)
+    class Meta:
+        unique_together = ('city', 'language')
