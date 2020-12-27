@@ -1,8 +1,2 @@
-cd..
-cd env
-cd scripts
-activate.bat
-cd..
-cd..
-cd src
+..\env\scripts\activate
 python manage.py runserver
