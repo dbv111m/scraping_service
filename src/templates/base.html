@@ -35,6 +35,19 @@
              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
           </li>
 
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+              <a class="nav-link" href="{% url 'accounts:logout' %} ">Выйти</a>
+            </li>
+
+          {% else %}
+            <li class="nav-item {% if request.path == login_url %} active {% endif %}">
+              <a class="nav-link" href="{% url 'accounts:login' %}">Войти</a>
+            </li>
+
+            </li>
+          {% endif %}
+
 <!--          <li class="nav-item">-->
 <!--            <a class="nav-link" href="{% url 'list'%}">Список вакансий</a>-->
 <!--          </li>-->

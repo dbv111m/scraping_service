@@ -19,7 +19,9 @@ class UserLoginForm(forms.Form):
                 raise forms.ValidationError('Пользователь не зарегистрирован!')
             if not check_password(password, qs[0].password):
                 raise forms.ValidationError('Пароль не верный!')
+
             user = authenticate(email=email, password=password)
+
             if not user:
                 raise forms.ValidationError('Данный аккаунт отключен')
 
