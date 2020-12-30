@@ -24,9 +24,14 @@
           </li>
 
           {% if user.is_authenticated %}
-              <li class="nav-item">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'accounts:update' %} ">Настройки</a>
+            </li>
+
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'accounts:logout' %} ">Выйти</a>
             </li>
+
           {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'accounts:login' %}">Войти</a>
