@@ -13,25 +13,24 @@
   <body>
   <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{% url 'home' %}">Job Finder</a>
+      <a class="navbar-brand" href="{% url 'home' %}">JF</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
 
+
           {% if user.is_authenticated %}
+              <li class="nav-item">
+              <a class="nav-link" href="{% url 'accounts:logout' %} ">Выйти</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'accounts:update' %} ">Настройки</a>
             </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'accounts:logout' %} ">Выйти</a>
-            </li>
-
           {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'accounts:login' %}">Войти</a>
@@ -42,11 +41,75 @@
           {% endif %}
 
 
-
         </ul>
       </div>
     </nav>
   </div>
+
+
+<!-- Добавление messages по документации Django -->
+<!--  <div class="container">-->
+  <!--  <div class="row">-->
+<!--      <div class="col-md-8 mx-auto">-->
+<!--        {% if messages %}-->
+<!--        <ul class="messages">-->
+<!--            {% for message in messages %}-->
+<!--            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>-->
+<!--              {{ message }}-->
+<!--            </li>-->
+<!--            {% endfor %}-->
+<!--        </ul>-->
+<!--        {% endif %}-->
+<!--      </div>-->
+<!--  </div>-->
+<!--  </div>-->
+
+<!-- Добавление messages по документации Django + Bootstrap -->
+<!--  <div class="container">-->
+<!--   <div class="alert alert-success" role="alert">-->
+<!--          {% if messages %}-->
+<!--          <ul class="messages">-->
+<!--              {% for message in messages %}-->
+<!--              <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>-->
+<!--                {{ message }}-->
+<!--                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--                   <span aria-hidden="true">&times;</span>-->
+<!--                   </button>-->
+<!--              </li>-->
+<!--              {% endfor %}-->
+<!--          </ul>-->
+<!--          {% endif %}-->
+<!--    </div>-->
+<!--  </div>-->
+
+ <!-- Добавление messages по курсу -->
+   <div class="container">
+    <div class="row">
+      <div class="col-8 mx-auto my-3">
+        {% if messages %}
+
+              {% for message in messages %}
+              {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                       {{ message }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+              {% else %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                       {{ message }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+               {% endif %}
+              {% endfor %}
+          {% endif %}
+      </div>
+    </div>
+  </div>
+
   <div class="container">
       {% block content %}{% endblock %}
   </div>
