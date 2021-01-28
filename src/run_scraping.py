@@ -24,6 +24,7 @@ parsers = (
     (dou, 'dou'),
     (djinni, 'djinni'),
 )
+
 jobs, errors = [], []
 
 def get_settings():
