@@ -65,6 +65,7 @@ tasks = asyncio.wait([loop.create_task(main(f)) for f in tmp_tasks])
 
 # for data in url_list:
 #
+
 #     for func, key in parsers:
 #         url = data['url_data'][key]
 #         j, e = func(url, city=data['city'], language=data['language'])
