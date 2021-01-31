@@ -1,2 +1,2 @@
-..\env\scripts\activate
+..\venv\scripts\activate
 python manage.py runserver
