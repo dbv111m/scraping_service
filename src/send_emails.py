@@ -11,7 +11,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'scraping_service.settings'
 
 django.setup()
 
-from scraping.models import Vacancy, Error
+from scraping.models import Vacancy, Error, Url
 from scraping_service.settings import EMAIL_HOST_USER
 
 today = datetime.date.today()
@@ -63,25 +63,60 @@ if users_dct:
             msg.send()
 
 # Формирование и отправка письма админу
+# Начальные константы
+subject = ''
+text_content = ''
+_html = ''
 
 # Формирование HTML для письма админу
-_html = ''
+# 1. Ошибки скрапинга
 qs = Error.objects.filter(timestamp=today)
 if qs.exists():
-    subject = f'Отправка ошибок за {today}'
-    text_content = 'Отправка ошибок за {today}'
     error = qs.first()
     data = error.data
     for i in data:
         _html += f'<p"><a href="{ i["url"] }">Error: { i["title"] }</a></p><br>'
+    subject += f'Отправка ошибок за {today}'
+    text_content += 'Отправка ошибок за {today}'
 
+# 2. Проверка наличия урлов для пар ЯП и Город
+qs = Url.objects.all().values('city', 'language')
+urls_dct = {(i['city'], i['language']): True for i in qs}
+urls_err = ''
 
+for keys in users_dct.keys():
+    if keys not in urls_dct:
+        urls_err += f'<p"> Для города: {keys[0]} и специализации: {keys[1]} отсутствуют урлы</p><br>'
+if urls_err:
+    subject += ' Отсутствующие урлы'
+    _html += urls_err
 
 
 # Отправка письма админу
-to = ADMIN_USER
+if subject:
+    to = ADMIN_USER
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_alternative(_html, "text/html")
+    msg.send()
 
-msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-msg.attach_alternative(_html, "text/html")
-msg.send()
+# Альтернативынй встроенному в Django способ отправки с использованием библиотеки smtplib
+# https://docs.python.org/3/library/smtplib.html
 
+# import smtplib
+# from email.mime.multipart import MIMEMultipart
+# from email.mime.text import MIMEText
+#
+# msg = MIMEMultipart('alternative')
+# msg['Subject'] = 'Список вакансий за  {}'.format(today)
+# msg['From'] = EMAIL_HOST_USER
+# mail = smtplib.SMTP()
+# mail.connect(EMAIL_HOST, 25)
+# mail.ehlo()
+# mail.starttls()
+# mail.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
+#
+# html_m = "<h1>Hello world</h1>"
+# part = MIMEText(html_m, 'html')
+# msg.attach(part)
+# mail.sendmail(EMAIL_HOST_USER, [to], msg.as_string())
+# mail.quit()
