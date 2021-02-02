@@ -46,7 +46,7 @@ if users_dct:
     for keys, emails in users_dct.items():
 
         # Формирование HTML для письма
-        subject = f"Рассылка вакансий за {today} {keys}"
+        subject = f"Рассылка вакансий за {today} (ключи: {keys})"
         rows = vacancies.get(keys, [])
         html = ''
         for row in rows:
