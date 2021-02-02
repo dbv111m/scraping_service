@@ -9,6 +9,7 @@ sys.path.append(proj)
 os.environ['DJANGO_SETTINGS_MODULE'] = 'scraping_service.settings'
 
 
+
 django.setup()
 
 from scraping.models import Vacancy
