@@ -38,13 +38,14 @@ def get_urls(_settings):
     url_dict = {(q['city_id'], q['language_id']): q['url_data'] for q in qs}
     urls = []
     for pair in _settings:
-        tmp = {}
-        tmp['city'] = pair[0]
-        tmp['language'] = pair[1]
-        url_data = url_dict.get(pair)
-        if url_data:
-            tmp['url_data'] = url_dict.get(pair)
-            urls.append(tmp)
+        if pair in url_dict:
+            tmp = {}
+            tmp['city'] = pair[0]
+            tmp['language'] = pair[1]
+            url_data = url_dict.get(pair)
+            if url_data:
+                tmp['url_data'] = url_dict.get(pair)
+                urls.append(tmp)
     return urls
 
 
