@@ -1,6 +1,8 @@
 import asyncio
 import codecs
 import os, sys
+import datetime
+
 
 from django.contrib.auth import get_user_model
 from django.db import DatabaseError
@@ -83,7 +85,16 @@ for job in jobs:
     except DatabaseError:
         pass
 if errors:
-    er = Error(data=errors).save()
+    qs=Error.objects.filter(timestamp=datetime.date.today())
+    if qs.exists():
+        err=qs.first()
+        err.data.update({'errors': errors})
+        err.save
+    else:
+        er = Error(data=f'errors:{errors}').save()
+
+
+
 
 # h = codecs.open('work.txt', 'w', 'utf-8')
 # h.write(str(jobs))
