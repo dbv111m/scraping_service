@@ -73,11 +73,19 @@ _html = ''
 qs = Error.objects.filter(timestamp=today)
 if qs.exists():
     error = qs.first()
-    data = error.data
+    data = error.data['errors']
     for i in data:
         _html += f'<p"><a href="{ i["url"] }">Error: { i["title"] }</a></p><br>'
     subject += f'Отправка ошибок за {today}'
-    text_content += 'Отправка ошибок за {today}'
+    text_content += "Ошибки скрапинга"
+    data = error.data['user_data']
+    if data:
+        _html += '<hr>'
+        _html += '<h2>Пожелания пользователей </h2>'
+        for i in data:
+            _html += f'<p">Город: {i["city"]}, Специальность:{i["language"]},  Имейл:{i["email"]}</p><br>'
+        subject += f" Пожелания пользователей {today}"
+        text_content += "Пожелания пользователей"
 
 # 2. Проверка наличия урлов для пар ЯП и Город
 qs = Url.objects.all().values('city', 'language')
@@ -86,9 +94,12 @@ urls_err = ''
 
 for keys in users_dct.keys():
     if keys not in urls_dct:
-        urls_err += f'<p"> Для города: {keys[0]} и специализации: {keys[1]} отсутствуют урлы</p><br>'
+        if keys[0] and keys[1]:
+            urls_err += f'<p"> Для города: {keys[0]} и ЯП: {keys[1]} отсутствуют урлы</p><br>'
 if urls_err:
-    subject += ' Отсутствующие урлы'
+    subject += ' Отсутствующие урлы '
+    _html += '<hr>'
+    _html += '<h2>Отсутствующие урлы </h2>'
     _html += urls_err
 
 
