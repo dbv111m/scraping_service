@@ -73,12 +73,12 @@ _html = ''
 qs = Error.objects.filter(timestamp=today)
 if qs.exists():
     error = qs.first()
-    data = error.data['errors']
+    data = error.data.get('errors', [])
     for i in data:
         _html += f'<p"><a href="{ i["url"] }">Error: { i["title"] }</a></p><br>'
     subject += f'Отправка ошибок за {today}'
     text_content += "Ошибки скрапинга"
-    data = error.data['user_data']
+    data = error.data.get('user_data')
     if data:
         _html += '<hr>'
         _html += '<h2>Пожелания пользователей </h2>'
