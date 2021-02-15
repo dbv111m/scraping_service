@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Khmer;
+    src: url(../fonts/Khmer.ttf);
+}
+#brand {
+    font-family: Khmer;
+    color: #FFF;
+}
