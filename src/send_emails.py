@@ -12,7 +12,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'scraping_service.settings'
 django.setup()
 
 from scraping.models import Vacancy, Error, Url
-from scraping_service.settings import EMAIL_HOST_USER
+from settings.local_settings import EMAIL_HOST_USER
 
 today = datetime.date.today()
 subject = f"Рассылка вакансий за {today}"
