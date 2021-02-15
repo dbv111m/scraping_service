@@ -94,7 +94,8 @@ if errors:
         er = Error(data=f'errors:{errors}').save()
 
 
-
+n_days_ago = datetime.date.today() - datetime.timedelta(15)
+Vacancy.objects.filter(timestamp__lte=n_days_ago).delete()
 
 # h = codecs.open('work.txt', 'w', 'utf-8')
 # h.write(str(jobs))
