@@ -3,22 +3,24 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-    {% for obj in  object_list %}
-        <div class="card my-3">
-          <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
-          <div class="card-body">
-            <h4>{{ obj.company }}</h4>
-            <p class="card-text">{{ obj.description }}</p>
-              <p>{{obj.city.name }} | {{obj.language.name }} |
-                  <small>{{obj.timestamp|date:"d-m-Y" }}</small></p>
-
-          </div>
-        </div>
-    {% empty %}
-        <h3 class="my-4 text-center">К сожалению, по Вашему запросу, ничего не найдено.</h3>
-    {% endfor %}
 
     {% if object_list %}
+
+        <h3 class="my-4 text-center">Результаты поиска согласно Вашего запроса.</h3>
+
+        {% for obj in  object_list %}
+            <div class="card my-3">
+              <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
+              <div class="card-body">
+                <h5>{{ obj.company }}</h5>
+                <p class="card-text">{{ obj.description }}</p>
+                  <p>{{obj.city.name }} | {{obj.language.name }} |
+                      <small>{{obj.timestamp|date:"d-m-Y" }}</small></p>
+
+              </div>
+            </div>
+        {% endfor %}
+
         <div class="row">
             <div class="col">
                 <nav aria-label="Page navigation example">
@@ -30,11 +32,11 @@
                                 </a>
                             </li>
                       {% endif %}
-                      {% for page in object_list.paginator.page_range %}
-                          <li class="page-item {% if page == object_list.number %} active {% endif %}">
-                              <a class="page-link" href="?city={{city}}&language={{ language }}&page={{page}}">{{page}}</a>
-                          </li>
-                      {% endfor %}
+                          {% for page in object_list.paginator.page_range %}
+                              <li class="page-item {% if page == object_list.number %} active {% endif %}">
+                                  <a class="page-link" href="?city={{city}}&language={{ language }}&page={{page}}">{{page}}</a>
+                              </li>
+                          {% endfor %}
                       {% if object_list.has_next %}
                         <li class="page-item">
                           <a class="page-link" href="?city={{city}}&language={{ language }}&page={{ object_list.next_page_number }}" aria-label="Next">
@@ -44,29 +46,15 @@
                       {% endif %}
                     </ul>
                 </nav>
-
-
-
-    <!--            <div class="pagination">-->
-    <!--                <span class="step-links">-->
-    <!--                    {% if object_list.has_previous %}-->
-    <!--                        <a href="?city={{city}}&language={{ language }}&page=1">&laquo; first</a>-->
-    <!--                        <a href="?city={{city}}&language={{ language }}&page={{ object_list.previous_page_number }}">previous</a>-->
-    <!--                    {% endif %}-->
-
-    <!--                    <span class="current">-->
-    <!--                        Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.-->
-    <!--                    </span>-->
-
-    <!--                    {% if object_list.has_next %}-->
-    <!--                        <a href="?city={{city}}&language={{ language }}&page={{ object_list.next_page_number }}">next</a>-->
-    <!--                        <a href="?city={{city}}&language={{ language }}&page={{ object_list.paginator.num_pages }}">last &raquo;</a>-->
-    <!--                    {% endif %}-->
-    <!--                </span>-->
-    <!--            </div>-->
             </div>
         </div>
+
+
+
+    {% else %}
+        <h3 class="my-4 text-center">К сожалению, по Вашему запросу, ничего не найдено.</h3>
     {% endif %}
+
     <div class="row ">
         <div class="col-md-6 mx-auto">
         <form method="GET" action="{% url 'list' %}">
