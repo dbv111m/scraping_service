@@ -68,7 +68,7 @@ class ContactForm(forms.Form):
     label='Город'
     )
     
-    Language = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={'class':'form-control'}),
+    language = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={'class':'form-control'}),
      label='Специализация'
     )
 
