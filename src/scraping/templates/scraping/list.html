@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %} Home {% endblock %}
+{% block title %} Список вакансий {% endblock %}
 
 {% block content %}
 
     {% if object_list %}
 
-        <h3 class="my-4 text-center">Результаты поиска согласно Вашего запроса.</h3>
+        <h3 class="my-4 text-center">Результаты поиска согласно Вашему запросу.</h3>
 
         {% for obj in  object_list %}
             <div class="card my-3">
@@ -57,12 +57,13 @@
 
     <div class="row ">
         <div class="col-md-6 mx-auto">
-        <form method="GET" action="{% url 'list' %}">
-            <div class="form-group">
-            {{ form.as_p }}
-            </div>
-            <button type="submit" class="btn btn-primary">Найти</button>
-        </form>
+            <h4 class="my-4 text-center">Новый поиск</h4>
+            <form method="GET" action="{% url 'list' %}">
+                <div class="form-group">
+                {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary">Найти</button>
+            </form>
         </div>
     </div>
 
