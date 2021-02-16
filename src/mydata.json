@@ -1,0 +1,265 @@
+[
+{
+  "model": "scraping.city",
+  "pk": 1,
+  "fields": {
+    "name": "Киев",
+    "slug": "kiev"
+  }
+},
+{
+  "model": "scraping.city",
+  "pk": 2,
+  "fields": {
+    "name": "Москва",
+    "slug": "moskva"
+  }
+},
+{
+  "model": "scraping.city",
+  "pk": 3,
+  "fields": {
+    "name": "Королев",
+    "slug": "korolev"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "slug": "python"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 2,
+  "fields": {
+    "name": "Java",
+    "slug": "java"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 3,
+  "fields": {
+    "name": "IT рекрутер",
+    "slug": "it_rekruter"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 420,
+  "fields": {
+    "url": "https://rabota.ua/company9176535/vacancy8181450",
+    "title": "  Python Developer\n ",
+    "company": "Мазный А.Ю., ФЛП",
+    "description": " Описание вакансииВ проект Enterprise Application и SaaS-платформ тберуется Node. js DeveloperОдно из наших направленийhttps://distributedlab.com/Что мы...\n",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2021-02-02"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 421,
+  "fields": {
+    "url": "https://rabota.ua/company806/vacancy8061430",
+    "title": "  Data Scientist\n ",
+    "company": "Vodafone Україна ",
+    "description": " Vodafone Україна - компанія світового рівня, що займає провідні позиції у сфері технологій та телекомунікацій, впроваджує інновації у всіх напрямках діяльності....\n",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2021-02-02"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 422,
+  "fields": {
+    "url": "https://rabota.ua/company286376/vacancy8359093",
+    "title": "  Python-программист\n ",
+    "company": "EXIST.UA",
+    "description": " EXIST.UA — интернет-магазин по продаже автозапчастей и сервисов, который насчитывает 36 офисов продаж компании во всех регионах страны.Команда EXIST.UA...\n",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2021-02-02"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 423,
+  "fields": {
+    "url": "https://rabota.ua/company328369/vacancy8309097",
+    "title": "  Senior/Lead Data Scientist\n ",
+    "company": "Ubisoft",
+    "description": " Company Description:Ubisoft’s 19,000 team members, working across more than 40 locations around the world, are bound by a common mission to enrich players’...\n",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2021-02-02"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 904,
+  "fields": {
+    "url": "https://korolev.hh.ru/vacancy/42391180?query=It%20%D1%80%D0%B5%D0%BA%D1%80%D1%83%D1%82%D0%B5%D1%80",
+    "title": "Менеджер по подбору персонала\\Рекрутер",
+    "company": " AD.RU",
+    "description": "Желание развиваться в сфере HR и рекрутмента. Коммуникабельность, организованность, стрессоустойчивость. Умение работать в команде. Опыт работы в кадровом агентстве будет...",
+    "city": 2,
+    "language": 3,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 905,
+  "fields": {
+    "url": "https://korolev.hh.ru/vacancy/40597051?query=It%20%D1%80%D0%B5%D0%BA%D1%80%D1%83%D1%82%D0%B5%D1%80",
+    "title": "Рекрутер IT-персонала",
+    "company": "ООО МЕРК",
+    "description": "Опыт подбора персонала от 3 лет, опыт подбора IT специалистов будет плюсом. - Высочайший уровень коммуникабельности.",
+    "city": 2,
+    "language": 3,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 906,
+  "fields": {
+    "url": "https://djinni.co/jobs/204169-data-scientist/",
+    "title": "\nData Scientist\n",
+    "company": "PSR Company",
+    "description": "\nLooking for a Data Scientist located in Kyiv or Moscow (remote) for a product company (AI solution for commercial real estate services).\r\nFlexible working hours, great management with no bureaucracy, business trips to the US.\n",
+    "city": 2,
+    "language": 1,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 907,
+  "fields": {
+    "url": "https://djinni.co/jobs/200012-etl-developer/",
+    "title": "\nETL Developer\n",
+    "company": "Andersen",
+    "description": "\nМеждународная аутсорсинговая IT - компания Andersen приглашает к сотрудничеству ETL специалиста для работы над крупным проектом!\n",
+    "city": 2,
+    "language": 1,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 908,
+  "fields": {
+    "url": "https://djinni.co/jobs/198975-python-developer-django-/",
+    "title": "\nPython Developer (Django)\n",
+    "company": "Clever Systems",
+    "description": "\nМы ищем Django разработчика с частичной занятостью для работы над нашим собственным продуктом SaaS PropTech Clever Unit clevsys.com\n",
+    "city": 2,
+    "language": 1,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 909,
+  "fields": {
+    "url": "https://djinni.co/jobs/194383-senior-python-developer/",
+    "title": "\nSenior Python developer\n",
+    "company": "Unit Group",
+    "description": "\nWe are looking for an experienced full stack developer (80% Back-end, 20% Front-end) to join our Engineering department.\n",
+    "city": 2,
+    "language": 1,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 910,
+  "fields": {
+    "url": "https://djinni.co/jobs/194384-senior-python-developer/",
+    "title": "\nSenior Python developer\n",
+    "company": "Unit Group",
+    "description": "\nWe are looking for an experienced server side developer to join our Engineering department\n",
+    "city": 2,
+    "language": 1,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 911,
+  "fields": {
+    "url": "https://djinni.co/jobs/192003-flutter-mobile-developer/",
+    "title": "\nFlutter Mobile Developer\n",
+    "company": "Sizdev",
+    "description": "\nsizdev в поисках Flutter-разработчика, который хочет непрерывно получать новый опыт и знания и применять их в создании инновационных продуктов. Идеальный кандидат имеет практический опыт разработки, обладает исключительной технической экспертизой\n",
+    "city": 2,
+    "language": 1,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 912,
+  "fields": {
+    "url": "https://korolev.hh.ru/vacancy/41998863?query=Python",
+    "title": "Web-программист",
+    "company": "ООО Дженерал Коммуникейшн",
+    "description": "Должен знать: -протоколы и принципы функционирования сети Интернет. -web-браузеры. -HTML, CSS, XML. -основы web-дизайна. -английский язык на базовом...",
+    "city": 3,
+    "language": 1,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 913,
+  "fields": {
+    "url": "https://korolev.hh.ru/vacancy/41439219?query=Python",
+    "title": "Frontend разработчик (Middle)",
+    "company": "ООО АНТРАКС, МНПП",
+    "description": "Vue.js. JavaScript. TypeScript. Html + css. Webpack. Jquery. Знание нативного Javascript, ES6/7. Опыт работы c RESTful API/Websocket. ",
+    "city": 3,
+    "language": 1,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 914,
+  "fields": {
+    "url": "https://korolev.hh.ru/vacancy/41035956?query=Python",
+    "title": "Инженер по разработке бортового программного обеспечения космических аппаратов",
+    "company": " РКК Энергия",
+    "description": "...предприятиях ракетно-космической отрасли, в авиационной сфере, в машиностроении. Знание языков программирования С(С++), желательно Python. Навыки написания технических текстов.",
+    "city": 3,
+    "language": 1,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 915,
+  "fields": {
+    "url": "https://korolev.hh.ru/vacancy/41702380?query=Python",
+    "title": "Системный администратор Linux",
+    "company": "ООО ИММО",
+    "description": "Активно используется Ansible. Будет плюсом: Опыт работы с Python, sh/bash в рамках администрирования систем. Опыт работы с Cisco/Juniper.",
+    "city": 3,
+    "language": 1,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 916,
+  "fields": {
+    "url": "https://www.work.ua/jobs/4218090/",
+    "title": "\nPython developer\n",
+    "company": "Involve",
+    "description": 
