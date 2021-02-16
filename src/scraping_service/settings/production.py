@@ -1,3 +1,7 @@
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
+
 """
 Django settings for scraping_service project.
 
