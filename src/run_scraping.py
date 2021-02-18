@@ -21,10 +21,8 @@ User = get_user_model()
 
 parsers = (
     (hhru, 'hhru'),
-    (work, 'work'),
-    (rabota, 'rabota'),
-    (dou, 'dou'),
-    (djinni, 'djinni'),
+    (habrcom, 'habrcom'),
+
 )
 
 jobs, errors = [], []

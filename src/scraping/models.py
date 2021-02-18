@@ -4,7 +4,7 @@ from django.db import models
 from .utils import from_cyrillic_to_eng
 
 def default_urls():
-    return {'hhru': '', 'work': '', 'rabota':'', 'dou': '', 'djinni': ''}
+    return {'hhru': '', 'habrcom': ''}
 
 
 class City(models.Model):
