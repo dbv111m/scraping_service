@@ -1,0 +1,220 @@
+[
+{
+  "model": "scraping.city",
+  "pk": 1,
+  "fields": {
+    "name": "яПНяПНяПНяПН",
+    "slug": "kiev"
+  }
+},
+{
+  "model": "scraping.city",
+  "pk": 2,
+  "fields": {
+    "name": "яПНяПНяПНяПНяПНяПН",
+    "slug": "moskva"
+  }
+},
+{
+  "model": "scraping.city",
+  "pk": 3,
+  "fields": {
+    "name": "яПНяПНяПНяПНяПНяПНяПН",
+    "slug": "korolev"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "slug": "python"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 2,
+  "fields": {
+    "name": "Java",
+    "slug": "java"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 3,
+  "fields": {
+    "name": "IT яПНяПНяПНяПНяПНяПНяПНяПН",
+    "slug": "it_rekruter"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 420,
+  "fields": {
+    "url": "https://rabota.ua/company9176535/vacancy8181450",
+    "title": "  Python Developer\n ",
+    "company": "яПНяПНяПНяПНяПНяПН яПН.яПН., яПНяПНяПН",
+    "description": " яПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПН Enterprise Application яПН SaaS-яПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПН Node. js DeveloperяПНяПНяПНяПН яПНяПН яПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНhttps://distributedlab.com/яПНяПНяПН яПНяПН...\n",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2021-02-02"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 421,
+  "fields": {
+    "url": "https://rabota.ua/company806/vacancy8061430",
+    "title": "  Data Scientist\n ",
+    "company": "Vodafone яПНяПНяПНяПНяПНяПН ",
+    "description": " Vodafone яПНяПНяПНяПНяПНяПН - яПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПН, яПНяПН яПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПН яПН яПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПН яПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН, яПНяПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПН яПН яПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПН....\n",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2021-02-02"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 422,
+  "fields": {
+    "url": "https://rabota.ua/company286376/vacancy8359093",
+    "title": "  Python-яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН\n ",
+    "company": "EXIST.UA",
+    "description": " EXIST.UA яПН яПНяПНяПНяПНяПНяПНяПНяПН-яПНяПНяПНяПНяПНяПНяПН яПНяПН яПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН яПН яПНяПНяПНяПНяПНяПНяПНяПН, яПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН 36 яПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПН яПНяПН яПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПН.яПНяПНяПНяПНяПНяПНяПН EXIST.UA...\n",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2021-02-02"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 423,
+  "fields": {
+    "url": "https://rabota.ua/company328369/vacancy8309097",
+    "title": "  Senior/Lead Data Scientist\n ",
+    "company": "Ubisoft",
+    "description": " Company Description:UbisoftяПНs 19,000 team members, working across more than 40 locations around the world, are bound by a common mission to enrich playersяПН...\n",
+    "city": 1,
+    "language": 1,
+    "timestamp": "2021-02-02"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 904,
+  "fields": {
+    "url": "https://korolev.hh.ru/vacancy/42391180?query=It%20%D1%80%D0%B5%D0%BA%D1%80%D1%83%D1%82%D0%B5%D1%80",
+    "title": "яПНяПНяПНяПНяПНяПНяПНяПН яПНяПН яПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПН\\яПНяПНяПНяПНяПНяПНяПНяПН",
+    "company": " AD.RU",
+    "description": "яПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН яПН яПНяПНяПНяПНяПН HR яПН яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН. яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН, яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН, яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН. яПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПН яПН яПНяПНяПНяПНяПНяПНяПН. яПНяПНяПНяПН яПНяПНяПНяПНяПНяПН яПН яПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПН...",
+    "city": 2,
+    "language": 3,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 905,
+  "fields": {
+    "url": "https://korolev.hh.ru/vacancy/40597051?query=It%20%D1%80%D0%B5%D0%BA%D1%80%D1%83%D1%82%D0%B5%D1%80",
+    "title": "яПНяПНяПНяПНяПНяПНяПНяПН IT-яПНяПНяПНяПНяПНяПНяПНяПНяПН",
+    "company": "яПНяПНяПН яПНяПНяПНяПН",
+    "description": "яПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПН яПНяПН 3 яПНяПНяПН, яПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПН IT яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПН. - яПНяПНяПНяПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПН яПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПНяПН.",
+    "city": 2,
+    "language": 3,
+    "timestamp": "2021-02-15"
+  }
+},
+{
+  "model": "scraping.error",
+  "pk": 20,
+  "fields": {
+    "timestamp": "2021-02-15",
+    "data": {
+      "user_data": [
+        {
+          "city": "яПНяПНяПНяПНяПНяПНяПН",
+          "email": "scrapingservicephl@gmail.com",
+          "language": null
+        },
+        {
+          "city": "яПНяПНяПНяПНяПНяПНяПН",
+          "email": "scrapingservicephl@gmail.com",
+          "language": null
+        },
+        {
+          "city": "яПНяПНяПНяПНяПНяПНяПН",
+          "email": "scrapingservicephl@gmail.com",
+          "language": null
+        },
+        {
+          "city": "яПНяПНяПНяПНяПНяПНяПН",
+          "email": "scrapingservicephl@gmail.com",
+          "language": "java"
+        }
+      ]
+    }
+  }
+},
+{
+  "model": "scraping.url",
+  "pk": 1,
+  "fields": {
+    "city": 3,
+    "language": 1,
+    "url_data": {
+      "hhru": "https://hh.ru/search/vacancy?area=2090&text=Python",
+      "work": "https://www.work.ua/jobs-mostyska-python/",
+      "rabota": "https://rabota.ua/zapros/python/%D0%BC%D0%BE%D1%81%D1%82%D0%B8%D1%81%D0%BA%D0%B0",
+      "dou": "https://jobs.dou.ua/vacancies/?city=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&category=Python",
+      "djinni": "https://djinni.co/jobs/keyword-python/moscow/"
+    }
+  }
+},
+{
+  "model": "scraping.url",
+  "pk": 2,
+  "fields": {
+    "city": 1,
+    "language": 1,
+    "url_data": {
+      "hhru": "https://hh.ru/search/vacancy?area=115&text=Python",
+      "work": "https://www.work.ua/jobs-kyiv-python/",
+      "rabota": "https://rabota.ua/zapros/python/%D0%BA%D0%B8%D0%B5%D0%B2",
+      "dou": "https://jobs.dou.ua/vacancies/?city=%D0%9A%D0%B8%D0%B5%D0%B2&category=Python",
+      "djinni": "https://djinni.co/jobs/keyword-python/kyiv/"
+    }
+  }
+},
+{
+  "model": "scraping.url",
+  "pk": 3,
+  "fields": {
+    "city": 2,
+    "language": 1,
+    "url_data": {
+      "hhru": "https://hh.ru/search/vacancy?area=1&text=Python",
+      "work": "https://www.work.ua/jobs-mostyska-python/",
+      "rabota": "https://rabota.ua/zapros/python/%D0%BC%D0%BE%D1%81%D1%82%D0%B8%D1%81%D0%BA%D0%B0",
+      "dou": "https://jobs.dou.ua/vacancies/?city=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&category=Python",
+      "djinni": "https://djinni.co/jobs/keyword-python/moscow/"
+    }
+  }
+},
+{
+  "model": "scraping.url",
+  "pk": 4,
+  "fields": {
+    "city": 2,
+    "language": 3,
+    "url_data": {
+      "hhru": "https://korolev.hh.ru/search/vacancy?area=1&text=It+%D1%80%D0%B5%D0%BA%D1%80%D1%83%D1%82%D0%B5%D1%80&only_with_salary=true",
+      "work": "https://www.work.ua/jobs-mostyska-it+%D1%80%D0%B5%D0%BA%D1%80%D1%83%D1%82%D0%B5%D1%80",
+      "rabota": "https://rabota.ua/zapros/python/%D0%BC%D0%BE%D1%81%D1%82%D0%B8%D1%81%D0%BA%D0%B0",
+      "dou": "https://jobs.dou.ua/vacancies/?city=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&category=Python",
+      "djinni": "https://djinni.co/jobs/keyword-python/moscow/"
+    }
+  }
+}
+]
+
