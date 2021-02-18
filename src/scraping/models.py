@@ -26,13 +26,13 @@ class City(models.Model):
 
 
 class Language(models.Model):
-    name = models.CharField(max_length=50, verbose_name='Язык программирования',
+    name = models.CharField(max_length=50, verbose_name='Специализация',
                             unique=True)
     slug = models.CharField(max_length=50, blank=True, unique=True)
 
     class Meta:
-        verbose_name = 'Язык программирования'
-        verbose_name_plural = 'Языки программирования'
+        verbose_name = 'Специализация'
+        verbose_name_plural = 'Специализации'
 
     def __str__(self):
         return self.name
@@ -48,7 +48,7 @@ class Vacancy(models.Model):
     company = models.CharField(max_length=250, verbose_name='Компания')
     description = models.TextField(verbose_name='Описание вакансии')
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='Город')
-    language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name='Язык программирования')
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name='Специализация')
     timestamp = models.DateField(auto_now_add=True)
 
     class Meta:
@@ -63,13 +63,18 @@ class Vacancy(models.Model):
 class Error(models.Model):
     timestamp = models.DateField(auto_now_add=True)
     data= models.JSONField()
+    class Meta:
+        verbose_name = 'Ошибки'
+        verbose_name_plural = 'Ошибки'
 
     def __str__(self):
         return str(self.timestamp)
 
 class Url(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='Город')
-    language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name='Язык программирования')
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name='Специализация')
     url_data = models.JSONField(default=default_urls)
     class Meta:
         unique_together = ('city', 'language')
+        verbose_name = 'Пути для скрапинга'
+        verbose_name_plural = 'Пути для скрапинга'
